@@ -10,7 +10,7 @@ const app = express();
 const port = process.env.PORT ;
 app.use(express.json());
 app.use("/api/v1/user", userRouter);
-app.use("/api/v1/course", courseRouter)
+// app.use("/api/v1/course", courseRouter) //no need
 app.use("/api/v1/admin", adminRouter)
 
 async function main(){
