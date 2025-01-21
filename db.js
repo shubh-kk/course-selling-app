@@ -1,20 +1,17 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose")
 const Schema = mongoose.Schema ;
-const ObjectId = mongoose.Types.ObjectId ;
+const ObjectId = Schema.Types.ObjectId ;
 
 const userSchema = new Schema({
-    firstname: {
-        type: String,
-        required: true,
-    },
-    lastName: String,
-    email: {
+    firstName: { type: String },
+    lastName: { type: String },
+    email: { 
         type: String,
         unique: true,
         required: true,
     },
-    password: {type: String, min: 3},
-    purchasedCourses: [{
+    password: { type: String, min: 3 },
+    courseId: [{
         type: ObjectId,
         ref: 'Course'
     },]
@@ -38,7 +35,7 @@ const courseSchema = new Schema({
 })
 
 const adminSchema = new Schema({
-    firstname: {
+    firstName: {
         type: String,
         required: true,
     },
@@ -51,12 +48,8 @@ const adminSchema = new Schema({
     password: {type: String, min: 3},
 })
 
-const userModel = mongoose.model("User", userSchema);
-const courseModel = mongoose.model("Course", courseSchema);
-const adminModel = mongoose.model("Admin", adminSchema);
+const User = mongoose.model("User", userSchema);
+const Course = mongoose.model("Course", courseSchema);
+const Admin = mongoose.model("Admin", adminSchema);
 
-module.exports = {
-    userModel,
-    courseModel,
-    adminModel
-}
+module.exports = { User, Course, Admin }
