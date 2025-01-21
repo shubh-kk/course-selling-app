@@ -18,32 +18,26 @@ const userSchema = new Schema({
 })
 
 const courseSchema = new Schema({
-    title: {
-        type: String,
-        required: true,
-    },
+    title: { type: String, required: true },
     price: {
         type: Number,
         min: 0,
         required: true
     },
     imageUrl: String,
-    createrId: {
+    creatorId: {
         type: ObjectId,
         ref: "Admin"
     }   
 })
 
 const adminSchema = new Schema({
-    firstName: {
-        type: String,
-        required: true,
-    },
+    firstName: { type: String, required: true },
     lastName: String,
     email: {
         type: String,
         unique: true,
-        required: true,
+        required: true
     },
     password: {type: String, min: 3},
 })

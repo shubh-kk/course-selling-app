@@ -1,7 +1,7 @@
 //index.js
+require("dotenv").config()
 const express = require("express");
 const mongoose = require("mongoose")
-require("dotenv").config()
 const { userRouter } = require("./routes/user");
 const { courseRouter } = require("./routes/course");
 const { adminRouter } = require("./routes/admin");
