@@ -118,7 +118,6 @@ router.patch("/purchase", userMiddleware, async (req, res) => {
     try {
         const existingCourse = await Course.findById(courseId);
 
-
         if (!existingCourse) {
             return res.status(404).json({
                 msg: "Course not found"
@@ -132,6 +131,7 @@ router.patch("/purchase", userMiddleware, async (req, res) => {
                 msg: "Course already purchased"
             });
         }
+        //should check that the user paid the price
         const updatedUser = await User.findByIdAndUpdate(
             userId,
             {
@@ -153,6 +153,41 @@ router.patch("/purchase", userMiddleware, async (req, res) => {
         });
     }
 
+})
+
+//purchased courses
+router.get("/purchases", userMiddleware, async function (req,res){
+    const userId = req.userId ;
+
+    const  user = await User.findOne({
+        _id: userId
+    })
+
+    const purchased_course = user.courseId ;
+    if (purchased_course) {
+        return res.json({
+            purchasedCourses: purchased_course
+        })
+    } else {
+        res.status(403).json({
+            msg:"No Course Purchases Found"
+        })
+    }
+})
+
+//List All Courses
+router.get("/preview", async function (req, res) {
+    const courses = await Course.find({}) ;
+
+    if (courses.length > 0) {
+        return res.json({
+            courses: courses
+        })
+    } else {
+        res.status(411).json({
+            msg: "No Courses"
+        })
+    }
 })
 
 module.exports = {
