@@ -21,20 +21,7 @@
 - .env file: for key store
 - .env.example: for ".env" file structure to know
 - seperate routes and middlewares folder
-- added Routing for Clean Code Practise
-
-### Sample Eg. For hashing passwords
-const bcrypt = require("bcrypt");
-
-async function passwordHashTest(password) {
-  const hash = await bcrypt.hash(password, 5);
-
-  const result = await bcrypt.compare(password, hash);
-  console.log(result); // true
-}
-
-passwordHashTest("generic"); 
 
 ---
 - Create the frontend
-- rate limitting middleware
+- rate limiting middleware
