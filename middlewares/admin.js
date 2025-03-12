@@ -36,3 +36,15 @@ function adminMiddleware(req, res, next) {
 }
 
 module.exports = { adminMiddleware }
+
+// ### Sample Eg. For hashing passwords
+// const bcrypt = require("bcrypt");
+
+// async function passwordHashTest(password) {
+//   const hash = await bcrypt.hash(password, 5);
+
+//   const result = await bcrypt.compare(password, hash);
+//   console.log(result); // true
+// }
+
+// passwordHashTest("generic"); 
